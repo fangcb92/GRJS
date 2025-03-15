@@ -241,9 +241,73 @@
                 description: "强大的AI对话助手，支持多种语言的自然对话",
                 tags: ["对话", "AI助手", "自然语言"],
                 category: "对话机器人",
+                url: "https://chat.openai.com",
                 heat: 9.8
             },
-            // 后续可添加更多工具数据
+            {
+                name: "Midjourney",
+                description: "顶级AI绘画工具，可生成高质量艺术作品",
+                tags: ["AI绘画", "艺术创作", "图像生成"],
+                category: "AI绘画",
+                url: "https://www.midjourney.com",
+                heat: 9.7
+            },
+            {
+                name: "Stable Diffusion",
+                description: "开源的AI图像生成模型，支持多种风格创作",
+                tags: ["AI绘画", "开源", "图像生成"],
+                category: "AI绘画",
+                url: "https://stability.ai",
+                heat: 9.5
+            },
+            {
+                name: "GitHub Copilot",
+                description: "AI驱动的代码智能助手，提供实时代码建议",
+                tags: ["AI编程", "代码助手", "开发工具"],
+                category: "AI编程",
+                url: "https://github.com/features/copilot",
+                heat: 9.6
+            },
+            {
+                name: "Jasper",
+                description: "专业的AI写作助手，支持多种文案类型生成",
+                tags: ["AI写作", "内容创作", "营销"],
+                category: "AI写作",
+                url: "https://www.jasper.ai",
+                heat: 9.3
+            },
+            {
+                name: "Runway",
+                description: "专业的AI视频编辑工具，支持多种特效处理",
+                tags: ["视频编辑", "AI特效", "创意工具"],
+                category: "音视频处理",
+                url: "https://runway.ml",
+                heat: 9.4
+            },
+            {
+                name: "Notion AI",
+                description: "智能办公助手，提供写作、总结、翻译等功能",
+                tags: ["办公效率", "笔记", "协作"],
+                category: "办公效率",
+                url: "https://www.notion.so",
+                heat: 9.2
+            },
+            {
+                name: "Duolingo AI",
+                description: "AI驱动的语言学习平台，提供个性化学习体验",
+                tags: ["教育", "语言学习", "AI辅导"],
+                category: "教育工具",
+                url: "https://www.duolingo.com",
+                heat: 9.0
+            },
+            {
+                name: "TensorFlow",
+                description: "谷歌开源的机器学习框架，适用于AI开发",
+                tags: ["深度学习", "机器学习", "开发框架"],
+                category: "开发框架",
+                url: "https://www.tensorflow.org",
+                heat: 9.5
+            }
         ];
 
         // DOM元素
@@ -286,7 +350,7 @@
         // 渲染工具卡片
         function renderTools(tools) {
             toolsGrid.innerHTML = tools.map(tool => `
-                <div class="tool-card">
+                <a href="${tool.url}" target="_blank" class="tool-card" style="text-decoration: none; color: inherit;">
                     <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%234a90e2'/><text x='50' y='50' font-family='Arial' font-size='40' fill='white' text-anchor='middle' dy='.3em'>AI</text></svg>" alt="${tool.name}" class="tool-icon">
                     <h3 class="tool-name">${tool.name}</h3>
                     <p class="tool-description">${tool.description}</p>
@@ -295,9 +359,9 @@
                     </div>
                     <div class="tool-stats">
                         <span>热度: ${tool.heat}</span>
-                        <span>❤️ 收藏</span>
+                        <span>🔗 访问官网</span>
                     </div>
-                </div>
+                </a>
             `).join('');
         }
 
