@@ -3,125 +3,137 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>冯子豪你在做什么？</title>
+    <title>博士与你 - 专业护肤品牌</title>
     <style>
+        :root {
+            --primary-color: #ff6b6b;
+            --secondary-color: #4ecdc4;
+            --text-color: #2c3e50;
+            --light-bg: #f9f9f9;
+        }
+        
         body {
             margin: 0;
-            padding: 20px;
-            min-height: 100vh;
-            background-color: #f5f5f5;
             font-family: "Microsoft YaHei", "微软雅黑", sans-serif;
-        }
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
-        .name {
-            font-size: 3rem;
-            color: #333;
-            text-align: center;
-            margin-bottom: 30px;
-            animation: fadeIn 2s ease-in;
-        }
-        .section {
-            margin-bottom: 30px;
-            animation: slideIn 1s ease-out;
-        }
-        .section h2 {
-            color: #2c3e50;
-            border-bottom: 2px solid #3498db;
-            padding-bottom: 10px;
-        }
-        .section p {
+            color: var(--text-color);
             line-height: 1.6;
-            color: #555;
         }
-        .quote {
-            font-style: italic;
-            color: #666;
-            border-left: 4px solid #3498db;
-            padding-left: 20px;
-            margin: 20px 0;
+
+        .header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 100px 20px;
+            text-align: center;
         }
+
+        .brand-name {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        .slogan {
+            font-size: 1.5rem;
+            opacity: 0.9;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .section {
+            margin-bottom: 60px;
+            opacity: 0;
+            animation: slideUp 1s ease-out forwards;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-title {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
         }
-        @keyframes slideIn {
-            from { transform: translateY(20px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-        .search-box {
-            margin-bottom: 20px;
-            text-align: center;
-        }
-        .search-box input {
-            padding: 10px;
-            width: 300px;
-            border: 2px solid #3498db;
-            border-radius: 5px;
-            font-size: 16px;
-        }
-        .name {
-            cursor: pointer;
-            text-decoration: underline;
-            color: #3498db;
-        }
-        .name:hover {
-            color: #2980b9;
+
+        @keyframes slideUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
     </style>
 </head>
 <body>
+    <header class="header">
+        <h1 class="brand-name">博士与你</h1>
+        <p class="slogan">科技赋能美丽，专业守护肌肤</p>
+    </header>
+
     <div class="container">
-        <div class="search-box">
-            <input type="text" placeholder="搜索冯子豪的踪迹..." id="searchInput">
-        </div>
-        
-        <div class="name" onclick="showSurprise()">冯子豪你在做什么？</div>
-        
-        <div class="section">
-            <h2>个人简介</h2>
-            <p>冯子豪，一个充满神秘色彩的人物。据说他经常出没于各种意想不到的地方，让人捉摸不透。</p>
-        </div>
+        <section class="section">
+            <h2 class="section-title">品牌理念</h2>
+            <p>博士与你致力于将尖端科技与护肤完美结合，以专业的研发团队为后盾，为每一位追求美丽的人提供科学有效的护肤方案。我们相信，真正的美丽源于健康的肌肤。</p>
+        </section>
 
-        <div class="section">
-            <h2>日常生活</h2>
-            <p>平日里，他似乎总是在进行一些不为人知的活动。没人知道他到底在做什么，这也成为了一个永恒的谜题。</p>
-            <div class="quote">
-                "你永远不知道下一秒的冯子豪在做什么..."
+        <section class="section">
+            <h2 class="section-title">产品特色</h2>
+            <div class="features">
+                <div class="feature-card">
+                    <h3 class="feature-title">科研配方</h3>
+                    <p>由专业团队研发，采用独特配方，确保产品安全有效。</p>
+                </div>
+                <div class="feature-card">
+                    <h3 class="feature-title">天然成分</h3>
+                    <p>精选优质天然原料，温和不刺激，适合各种肌肤使用。</p>
+                </div>
+                <div class="feature-card">
+                    <h3 class="feature-title">个性定制</h3>
+                    <p>根据不同肌肤需求，提供个性化护肤方案。</p>
+                </div>
             </div>
-        </div>
+        </section>
 
-        <div class="section">
-            <h2>趣闻轶事</h2>
-            <p>有传言说，冯子豪有时会突然出现在意想不到的地方，然后又神秘消失。这种行为模式让人既困惑又好奇。</p>
-        </div>
-
-        <div class="section">
-            <h2>未解之谜</h2>
-            <p>至今为止，仍然没有人能够准确回答"冯子豪你在做什么？"这个问题。这个谜题可能会永远保持它的神秘感。</p>
-        </div>
+        <section class="section">
+            <h2 class="section-title">品牌承诺</h2>
+            <p>我们承诺：</p>
+            <ul>
+                <li>所有产品通过严格安全测试</li>
+                <li>原料可追溯，生产全程监控</li>
+                <li>不断创新，持续改进配方</li>
+                <li>为消费者提供专业的护肤建议</li>
+            </ul>
+        </section>
     </div>
-
-    <script>
-        function showSurprise() {
-            window.location.href = 'surprise.html';
-        }
-
-        document.getElementById('searchInput').addEventListener('input', function(e) {
-            const searchText = e.target.value.toLowerCase();
-            const sections = document.querySelectorAll('.section');
-            
-            sections.forEach(section => {
-                const content = section.textContent.toLowerCase();
-                section.style.display = content.includes(searchText) ? 'block' : 'none';
-            });
-        });
-    </script>
 </body>
 </html>
