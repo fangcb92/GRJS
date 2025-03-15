@@ -3,137 +3,306 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>博士与你 - 专业护肤品牌</title>
+    <title>AI工具导航 - 专业的AI资源导航平台</title>
     <style>
         :root {
-            --primary-color: #ff6b6b;
-            --secondary-color: #4ecdc4;
-            --text-color: #2c3e50;
-            --light-bg: #f9f9f9;
+            --primary-color: #4a90e2;
+            --secondary-color: #50e3c2;
+            --text-color: #333;
+            --light-bg: #f8f9fa;
+            --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
         
         body {
-            margin: 0;
-            font-family: "Microsoft YaHei", "微软雅黑", sans-serif;
+            font-family: "Microsoft YaHei", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             color: var(--text-color);
             line-height: 1.6;
+            background-color: var(--light-bg);
         }
 
+        /* 顶部导航栏 */
         .header {
             background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--card-shadow);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand {
             color: white;
-            padding: 100px 20px;
-            text-align: center;
-        }
-
-        .brand-name {
-            font-size: 3.5rem;
-            margin-bottom: 20px;
-            animation: fadeIn 1.5s ease-out;
-        }
-
-        .slogan {
             font-size: 1.5rem;
-            opacity: 0.9;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        /* 搜索框 */
+        .search-box {
+            position: relative;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 20px;
+            font-size: 1rem;
+            outline: none;
+        }
+
+        /* 主要内容区域 */
+        .main-content {
+            margin-top: 80px;
+            padding: 2rem 1rem;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 40px 20px;
         }
 
-        .section {
-            margin-bottom: 60px;
-            opacity: 0;
-            animation: slideUp 1s ease-out forwards;
+        /* 分类导航 */
+        .categories {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 2rem;
         }
 
-        .section-title {
-            font-size: 2rem;
+        .category-btn {
+            padding: 0.5rem 1rem;
+            background-color: white;
+            border: 1px solid var(--primary-color);
+            border-radius: 20px;
             color: var(--primary-color);
-            margin-bottom: 30px;
-            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
         }
 
-        .features {
+        .category-btn:hover,
+        .category-btn.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        /* 工具卡片网格 */
+        .tools-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+            animation: fadeIn 0.5s ease-out;
         }
 
-        .feature-card {
+        .tool-card {
             background: white;
-            padding: 30px;
             border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            padding: 1.5rem;
+            box-shadow: var(--card-shadow);
             transition: transform 0.3s ease;
+            cursor: pointer;
         }
 
-        .feature-card:hover {
+        .tool-card:hover {
             transform: translateY(-5px);
         }
 
-        .feature-title {
-            color: var(--primary-color);
-            font-size: 1.5rem;
-            margin-bottom: 15px;
+        .tool-icon {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 1rem;
         }
 
+        .tool-name {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .tool-description {
+            color: #666;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .tool-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tag {
+            background-color: var(--light-bg);
+            padding: 0.2rem 0.5rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            color: #666;
+        }
+
+        .tool-stats {
+            margin-top: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.8rem;
+            color: #888;
+        }
+
+        /* 动画效果 */
         @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        @keyframes slideUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .search-box {
+                width: 100%;
+            }
+
+            .main-content {
+                margin-top: 120px;
             }
         }
     </style>
 </head>
 <body>
     <header class="header">
-        <h1 class="brand-name">博士与你</h1>
-        <p class="slogan">科技赋能美丽，专业守护肌肤</p>
+        <nav class="nav-container">
+            <a href="#" class="brand">AI工具导航</a>
+            <div class="search-box">
+                <input type="text" class="search-input" placeholder="搜索AI工具..." id="searchInput">
+            </div>
+        </nav>
     </header>
 
-    <div class="container">
-        <section class="section">
-            <h2 class="section-title">品牌理念</h2>
-            <p>博士与你致力于将尖端科技与护肤完美结合，以专业的研发团队为后盾，为每一位追求美丽的人提供科学有效的护肤方案。我们相信，真正的美丽源于健康的肌肤。</p>
-        </section>
+    <main class="main-content">
+        <div class="container">
+            <div class="categories" id="categories">
+                <button class="category-btn active">全部</button>
+                <button class="category-btn">AI绘画</button>
+                <button class="category-btn">AI写作</button>
+                <button class="category-btn">AI编程</button>
+                <button class="category-btn">音视频处理</button>
+                <button class="category-btn">办公效率</button>
+                <button class="category-btn">教育工具</button>
+                <button class="category-btn">对话机器人</button>
+                <button class="category-btn">开发框架</button>
+            </div>
 
-        <section class="section">
-            <h2 class="section-title">产品特色</h2>
-            <div class="features">
-                <div class="feature-card">
-                    <h3 class="feature-title">科研配方</h3>
-                    <p>由专业团队研发，采用独特配方，确保产品安全有效。</p>
-                </div>
-                <div class="feature-card">
-                    <h3 class="feature-title">天然成分</h3>
-                    <p>精选优质天然原料，温和不刺激，适合各种肌肤使用。</p>
-                </div>
-                <div class="feature-card">
-                    <h3 class="feature-title">个性定制</h3>
-                    <p>根据不同肌肤需求，提供个性化护肤方案。</p>
+            <div class="tools-grid" id="toolsGrid">
+                <!-- 示例工具卡片 -->
+                <div class="tool-card">
+                    <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%234a90e2'/><text x='50' y='50' font-family='Arial' font-size='40' fill='white' text-anchor='middle' dy='.3em'>AI</text></svg>" alt="工具图标" class="tool-icon">
+                    <h3 class="tool-name">ChatGPT</h3>
+                    <p class="tool-description">强大的AI对话助手，支持多种语言的自然对话。</p>
+                    <div class="tool-tags">
+                        <span class="tag">对话</span>
+                        <span class="tag">AI助手</span>
+                        <span class="tag">自然语言</span>
+                    </div>
+                    <div class="tool-stats">
+                        <span>热度: 9.8</span>
+                        <span>❤️ 收藏</span>
+                    </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </main>
 
-        <section class="section">
-            <h2 class="section-title">品牌承诺</h2>
-            <p>我们承诺：</p>
-            <ul>
-                <li>所有产品通过严格安全测试</li>
-                <li>原料可追溯，生产全程监控</li>
-                <li>不断创新，持续改进配方</li>
-                <li>为消费者提供专业的护肤建议</li>
-            </ul>
-        </section>
-    </div>
+    <script>
+        // 工具数据
+        const toolsData = [
+            {
+                name: "ChatGPT",
+                description: "强大的AI对话助手，支持多种语言的自然对话",
+                tags: ["对话", "AI助手", "自然语言"],
+                category: "对话机器人",
+                heat: 9.8
+            },
+            // 后续可添加更多工具数据
+        ];
+
+        // DOM元素
+        const searchInput = document.getElementById('searchInput');
+        const toolsGrid = document.getElementById('toolsGrid');
+        const categoryButtons = document.querySelectorAll('.category-btn');
+
+        // 搜索功能
+        searchInput.addEventListener('input', filterTools);
+
+        // 分类切换
+        categoryButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                categoryButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+                filterTools();
+            });
+        });
+
+        // 工具过滤函数
+        function filterTools() {
+            const searchTerm = searchInput.value.toLowerCase();
+            const activeCategory = document.querySelector('.category-btn.active').textContent;
+
+            const filteredTools = toolsData.filter(tool => {
+                const matchesSearch = 
+                    tool.name.toLowerCase().includes(searchTerm) ||
+                    tool.description.toLowerCase().includes(searchTerm) ||
+                    tool.tags.some(tag => tag.toLowerCase().includes(searchTerm));
+                
+                const matchesCategory = 
+                    activeCategory === '全部' || tool.category === activeCategory;
+
+                return matchesSearch && matchesCategory;
+            });
+
+            renderTools(filteredTools);
+        }
+
+        // 渲染工具卡片
+        function renderTools(tools) {
+            toolsGrid.innerHTML = tools.map(tool => `
+                <div class="tool-card">
+                    <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%234a90e2'/><text x='50' y='50' font-family='Arial' font-size='40' fill='white' text-anchor='middle' dy='.3em'>AI</text></svg>" alt="${tool.name}" class="tool-icon">
+                    <h3 class="tool-name">${tool.name}</h3>
+                    <p class="tool-description">${tool.description}</p>
+                    <div class="tool-tags">
+                        ${tool.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+                    </div>
+                    <div class="tool-stats">
+                        <span>热度: ${tool.heat}</span>
+                        <span>❤️ 收藏</span>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // 初始化显示
+        renderTools(toolsData);
+    </script>
 </body>
 </html>
