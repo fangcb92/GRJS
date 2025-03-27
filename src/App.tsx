@@ -118,7 +118,9 @@ const App = () => {
               </SwiperSlide>
               <SwiperSlide>
                 <img src="/images/5.png" alt="产品展示" className="w-full" />
-
+              <SwiperSlide>
+                <img src="/images/weixin.jpg" alt="微信二维码" className="w-full" />
+              </SwiperSlide>
               </SwiperSlide>
             </Swiper>
           </div>
@@ -172,17 +174,28 @@ const App = () => {
               ))}
             </div>
             <div className="relative aspect-video rounded-lg overflow-hidden">
-              <video
-  autoPlay
-  loop
-  playsInline
-  controls
-  className="w-full h-full object-cover"
-  type="video/mp4"
-  crossOrigin="anonymous"
->
-  <source src="/videos/shipin.mp4" type="video/mp4" />
-</video>
+              <div className="relative">
+                <video
+                  autoPlay
+                  loop
+                  playsInline
+                  controls={true}
+                  className="w-full h-full object-cover"
+                >
+                  <source src="/videos/shipin.mp4" type="video/mp4" />
+                </video>
+                <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 p-2">
+                  <video 
+                    controls 
+                    className="w-full"
+                    autoPlay 
+                    loop 
+                    playsInline
+                  >
+                    <source src="/videos/shipin.mp4" type="video/mp4" />
+                  </video>
+                </div>
+              </div>
               <div className="absolute inset-0 bg-gradient-black opacity-30"></div>
             </div>
           </div>
@@ -256,7 +269,7 @@ const App = () => {
               <div className="bg-deep-gray p-8 rounded-lg border border-secondary/20">
                 <h3 className="text-xl font-bold mb-4 text-gradient">联系我们</h3>
                 <div className="relative w-48 h-48 mx-auto">
-                  <img src="/images/weixin.jpg" alt="微信二维码" className="w-full h-full object-cover rounded-lg" />
+                  <img src="/images/qrcode.jpg" alt="微信二维码" className="w-full h-full object-cover rounded-lg" />
                   <div className="absolute inset-0 bg-gradient-gold opacity-10 rounded-lg animate-pulse"></div>
                 </div>
                 <p className="text-center mt-4 text-gray-400">扫码添加商务微信</p>
