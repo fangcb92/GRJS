@@ -1,0 +1,70 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    @apply bg-primary text-white scroll-smooth;
+  }
+  body {
+    @apply min-h-screen font-sans antialiased;
+  }
+}
+
+@layer components {
+  .nav-link {
+    @apply relative px-4 py-2 text-white hover:text-secondary transition-colors duration-300;
+  }
+  .nav-link::after {
+    @apply content-[''] absolute left-0 bottom-0 w-0 h-0.5 bg-gradient-gold transition-all duration-300;
+  }
+  .nav-link:hover::after {
+    @apply w-full;
+  }
+  .btn-primary {
+    @apply px-8 py-3 bg-gradient-gold text-primary font-bold rounded-full
+           hover:shadow-[0_0_20px_rgba(255,215,0,0.5)] transition-shadow duration-300;
+  }
+  .section-title {
+    @apply text-4xl md:text-5xl font-bold mb-8 bg-gradient-gold bg-clip-text text-transparent
+           [text-shadow:1px_1px_2px_rgba(255,215,0,0.3)];
+  }
+  .feature-card {
+    @apply p-6 rounded-lg bg-deep-gray border border-secondary/20
+           hover:border-secondary/50 transition-all duration-300
+           hover:shadow-[0_0_30px_rgba(255,215,0,0.1)];
+  }
+  .process-step {
+    @apply flex items-center gap-4 p-6 rounded-lg bg-deep-gray/50
+           border border-secondary/20 relative;
+  }
+  .process-step::before {
+    @apply content-[''] absolute -left-2 top-1/2 w-4 h-4
+           bg-gradient-gold rounded-full -translate-y-1/2;
+  }
+  .process-arrow {
+    @apply absolute -right-8 top-1/2 w-16 h-0.5 bg-gradient-gold
+           -translate-y-1/2 hidden md:block;
+  }
+  .process-arrow::after {
+    @apply content-[''] absolute right-0 -top-1 w-3 h-3
+           border-t-2 border-r-2 border-secondary
+           transform rotate-45;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-gradient-gold bg-clip-text text-transparent;
+  }
+  .border-gradient {
+    @apply border-2 border-transparent bg-gradient-gold bg-origin-border;
+  }
+  .particles-bg {
+    @apply relative overflow-hidden;
+  }
+  .particles-bg::before {
+    @apply content-[''] absolute inset-0 bg-[radial-gradient(circle,rgba(255,215,0,0.1)_1px,transparent_1px)]
+           bg-[length:20px_20px] animate-shine pointer-events-none;
+  }
+}
